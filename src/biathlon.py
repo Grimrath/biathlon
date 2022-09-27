@@ -38,3 +38,9 @@ def hits(targets):
     return targets.count(closed())
 
 
+def target_to_string(target):
+    if is_closed(target):
+        return "0 "
+    elif is_open(target):
+        return "* "
+    return
