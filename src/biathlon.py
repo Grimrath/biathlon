@@ -55,7 +55,7 @@ def targets_to_string(targets):
 
 def view_targets(targets):
     print()
-    print(" "*4 + " ".join([str(i) for i in range(len(targets))]))
+    print(" "*4 + " ".join([str(i+1) for i in range(len(targets))]))
     print()
     print(" "*4 + targets_to_string(targets))
     print()
@@ -76,3 +76,31 @@ def shoot(targets, target_index):
     else:
         return "Miss"
 
+
+def parse_target(target_str):
+    if not target_str.isnumeric() or int(target_str) not in range(1, 6):
+        return
+    return int(target_str) - 1
+
+
+def main():
+    board = new_targets()
+    shots = 0
+    splash()
+    input("Press any key to continue...")
+    while board != [1]*5:
+        view_targets(board)
+        print(shoot(board, parse_target(input("Select target to shoot: "))))
+        shots += 1
+    view_targets(board)
+    print("Well done! All targets hit!")
+    print(f"Total shots: {shots}")
+    print(f"Accuracy: {round(5*100/shots)}%")
+    print("Game over.")
+
+    if input("Play again (y/n)? ").lower() == "y":
+        main()
+
+
+if __name__ == '__main__':
+    main()
