@@ -1,4 +1,28 @@
-from random import randint
+from random import random
+
+
+threshold = 0
+
+
+def main():
+    global threshold
+    board = new_targets()
+    shots = 0
+    splash()
+    input("Press any key to continue...")
+    threshold = select_difficulty()
+    while board != [1]*5:
+        view_targets(board)
+        print(shoot(board, parse_target(input("Select target to shoot: "))))
+        shots += 1
+    view_targets(board)
+    print("Well done! All targets hit!")
+    print(f"Total shots: {shots}")
+    print(f"Accuracy: {round(5*100/shots)}%")
+    print("Game over.")
+
+    if input("Play again (y/n)? ").lower() == "y":
+        main()
 
 
 def splash():
@@ -63,7 +87,8 @@ def view_targets(targets):
 
 
 def random_hit():
-    return bool(randint(0, 1))
+    global threshold
+    return random() < threshold
 
 
 def shoot(targets, target_index):
@@ -77,29 +102,25 @@ def shoot(targets, target_index):
         return "Miss"
 
 
+def select_difficulty():
+    diff = input("Select difficulty (hard, medium, easy): ").lower()
+    if diff == "hard":
+        return 0.2
+    elif diff == "medium":
+        return 0.5
+    elif diff == "easy":
+        return 0.75
+    elif diff == "god_mode":
+        return 1
+    else:
+        print("Invalid input! Try again...")
+        return select_difficulty()
+
+
 def parse_target(target_str):
     if not target_str.isnumeric() or int(target_str) not in range(1, 6):
         return
     return int(target_str) - 1
-
-
-def main():
-    board = new_targets()
-    shots = 0
-    splash()
-    input("Press any key to continue...")
-    while board != [1]*5:
-        view_targets(board)
-        print(shoot(board, parse_target(input("Select target to shoot: "))))
-        shots += 1
-    view_targets(board)
-    print("Well done! All targets hit!")
-    print(f"Total shots: {shots}")
-    print(f"Accuracy: {round(5*100/shots)}%")
-    print("Game over.")
-
-    if input("Play again (y/n)? ").lower() == "y":
-        main()
 
 
 if __name__ == '__main__':
