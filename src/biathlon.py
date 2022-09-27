@@ -29,3 +29,9 @@ def new_targets():
     return [open() for _ in range(5)]
 
 
+def close_target(target_index, targets):
+    targets[target_index] = closed()
+    return targets
+
+
+
