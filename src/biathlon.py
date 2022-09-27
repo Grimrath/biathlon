@@ -49,3 +49,11 @@ def target_to_string(target):
 def targets_to_string(targets):
     return "".join([target_to_string(target) for target in targets])
 
+
+def view_targets(targets):
+    print()
+    print(" "*4 + " ".join([str(i) for i in range(len(targets))]))
+    print()
+    print(" "*4 + targets_to_string(targets))
+    print()
+    return
