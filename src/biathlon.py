@@ -44,3 +44,8 @@ def target_to_string(target):
     elif is_open(target):
         return "* "
     return
+
+
+def targets_to_string(targets):
+    return "".join([target_to_string(target) for target in targets])
+
