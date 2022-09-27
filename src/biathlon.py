@@ -1,3 +1,6 @@
+from random import randint
+
+
 def splash():
     print()
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
@@ -57,3 +60,9 @@ def view_targets(targets):
     print(" "*4 + targets_to_string(targets))
     print()
     return
+
+
+def random_hit():
+    return bool(randint(0, 1))
+
+
