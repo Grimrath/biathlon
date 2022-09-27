@@ -66,3 +66,13 @@ def random_hit():
     return bool(randint(0, 1))
 
 
+def shoot(targets, target_index):
+    if random_hit():
+        if is_open(targets[target_index]):
+            close_target(target_index, targets)
+            return "Hit on open target"
+        else:
+            return "Hit on closed target"
+    else:
+        return "Miss"
+
