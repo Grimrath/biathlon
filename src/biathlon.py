@@ -34,4 +34,7 @@ def close_target(target_index, targets):
     return targets
 
 
+def hits(targets):
+    return targets.count(closed())
+
 
