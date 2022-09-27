@@ -7,3 +7,11 @@ def splash():
     print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
     print()
     return
+
+
+def open():
+    return 0
+
+
+def closed():
+    return 1
