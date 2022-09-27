@@ -15,3 +15,17 @@ def open():
 
 def closed():
     return 1
+
+
+def is_open(target):
+    return target == open()
+
+
+def is_closed(target):
+    return target == closed()
+
+
+def new_targets():
+    return [open() for _ in range(5)]
+
+
