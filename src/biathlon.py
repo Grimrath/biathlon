@@ -11,7 +11,7 @@ def main():
     splash()
     input("Press any key to continue...")
     threshold = select_difficulty()
-    while board != [1]*5:
+    while board != [closed()]*5:
         view_targets(board)
         print(shoot(board, parse_target(input("Select target to shoot: "))))
         shots += 1
